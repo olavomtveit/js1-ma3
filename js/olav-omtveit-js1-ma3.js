@@ -1,7 +1,7 @@
 //Question 1
 //----------
-(a, b) => {
-    console.log(`return a-b`)
+const q1Function = (a, b) => {
+    return a-b;
 };
 
 //Question 2
