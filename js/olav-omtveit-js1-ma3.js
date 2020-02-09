@@ -3,6 +3,7 @@
 const q1Function = (a, b) => {
     return a-b;
 };
+console.log(q1function(7, 3));
 
 //Question 2
 //----------
