@@ -93,5 +93,5 @@ fetch(ratingsURL)
 
 function loadRatings(json) {
     const ratings = document.querySelector(".rating");
-    ratings.innerHTML = json.rating;
+    ratings.innerHTML = "Rating: " + json.rating;
 }
