@@ -27,14 +27,16 @@ function loadSports(json) {
         //print out the game names from the API.
         console.dir(json.results[i].name);
     }
+
 }
 
-/* //Question 3
+//Question 3
 //----------
-const wordSelect = document.querySelector("p");
-wordSelect.innerText = animalNames;
+let word = `These cats are outragous.`;
 
-const wordSwap = animalNames.replace("cats", "giraffe"); */
+const wordSelect = document.querySelector("p");
+const formattedWords = word.replace("cats", "giraffes")
+wordSelect.innerText = formattedWords;
 
 //Question 4
 //----------
@@ -43,36 +45,53 @@ const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 let id;
 
-if(params.has("id")){
-    id = params.get("id");
-}
-else if(){
+if (params.has("userId")) {
+    id = params.get("userId");
 
-}
-else{
-    document.location.href = "/third.html";
-}
+    if (id < 10) {
+        //redirect to first.html
+        console.log("first.html");
+    } else {
+        //redirect to second.html
+        console.log("second.html");
+    }
 
-fetch(userURL)
+} else {
+    //redirect to third.html
+    console.log("third.html");
+};
+
+//Question 5
+//---------
+const container = document.querySelector(".container");
+const button = document.querySelector(".btn");
+
+container.removeChild(button);
+
+//Question 6
+//----------
+const animalList = document.querySelector(".animals .cows")
+const createAnimal = document.createElement("li");
+createAnimal.innerText = "Parrots"
+createAnimal.className = "parrots";
+animalList.after(createAnimal);
+
+//Question 7
+//----------
+const ratingsURL = "https://api.rawg.io/api/games/3801";
+
+fetch(ratingsURL)
     .then(function (response) {
         return response.json();
     })
     .then(function (json) {
-        checkUserID(json);
+        loadRatings(json);
     })
     .catch(function (error) {
+        console.dir(error);
+    })
 
-    });
-
-
-
-/*     function checkUserID(json){
-        const user = json.results;
-        console.log("The function is running")
-
-        for(let i = 0; i < user.length; i++){
-            console.log("The loop works");
-
-            //add if/case statements to check userID parameters.
-        }
-    } */
+function loadRatings(json) {
+    const ratings = document.querySelector(".rating");
+    ratings.innerHTML = json.rating;
+}
